@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <h1 class="page-header">Welcome to my Hobby Page</h1>
+            <h4>Click the links below to check out my hobby's</h4>
+            
+            <ul id="homepage-list">
+                <li>
+                    <a class="btn btn-primary" href="{{ path('hobby_page', {'hobby': 'music'}) }}">Music</a>
+                </li>
+                <li>
+                    <a class="btn btn-primary" href="{{ path('hobby_page', {'hobby': 'sport'}) }}">Sport</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
