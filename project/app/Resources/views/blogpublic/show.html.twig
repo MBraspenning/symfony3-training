@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Blogpost</h1>
+    <div class="container">
+        
+    <h1 class="page-header mb-4 text-center">Blogpost</h1>
 
-    <table>
+    <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -14,35 +16,29 @@
                 <td>{{ blogPost.title }}</td>
             </tr>
             <tr>
-                <th>Post</th>
-                <td>{{ blogPost.post }}</td>
-            </tr>
-            <tr>
                 <th>Dateadded</th>
                 <td>{% if blogPost.dateAdded %}{{ blogPost.dateAdded|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
+            <tr>
+                <th>Post</th>
+                <td>{{ blogPost.post }}</td>
+            </tr>
         </tbody>
     </table>
-    <ul>
-        <li>
-            <a href="{{ path('blog_index_public') }}">Back to the list</a>
-        </li>
-    </ul>
+
+    <a class="btn btn-primary ml-2" href="{{ path('blog_index_public') }}">Back to the list</a>
+
     
-    <h1>Comment creation</h1>
+    <h3 class="page-header mb-4 mt-4 text-center">Comments</h3>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input class="btn btn-primary ml-2" type="submit" value="Create" />
     {{ form_end(form) }}
     
-    <table>
+    <p class="ml-2 mt-5">{{ comments|length }} comments.</p>
+    <table class="table">
         <tbody>
-            <tr>
-                <td colspan="2">
-                    {{ comments|length }} comments.
-                </td>
-            </tr>
             {% for comment in comments %}
                 <tr>
                     <td>
@@ -55,5 +51,8 @@
             {% endfor %}
         </tbody>
     </table>
+    
+    </div>
 
 {% endblock %}
+

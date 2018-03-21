@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Blogposts list</h1>
+    <h1 class="page-header text-center mb-4">Blogposts list</h1>
 
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -19,10 +19,10 @@
                 <td><a href="{{ path('blog_show_public', { 'id': blogPost.id }) }}">{{ blogPost.id }}</a></td>
                 <td>{{ blogPost.title }}</td>
                 <td>{{ blogPost.post }}</td>
-                <td>{% if blogPost.dateAdded %}{{ blogPost.dateAdded|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if blogPost.dateAdded %}{{ blogPost.dateAdded|date('Y-m-d') }}{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
+                    <ul class="list-group" id="my-list">
+                        <li class="list-item" style="padding: 0;">
                             <a href="{{ path('blog_show_public', { 'id': blogPost.id }) }}">show</a>
                         </li>
                     </ul>
