@@ -34,7 +34,14 @@ class Comment
      * @ORM\Column(name="body", type="text")
      */
     private $body;
-
+    
+    /**
+    * @var BlogPost
+    *
+    * @ORM\ManyToOne(targetEntity="BlogPost", inversedBy="comments")
+    * @ORM\JoinColumn(name="blogpost_id", referencedColumnName="id")
+    */
+    private $blogpost;
 
     /**
      * Get id
@@ -92,6 +99,28 @@ class Comment
     public function getBody()
     {
         return $this->body;
+    }
+    
+    /**
+    * Set blogpost
+    *
+    * @return BlogPost
+    */
+    public function setBlogpost($blogpost)
+    {
+        $this->blogpost = $blogpost;
+        
+        return $this;
+    }
+    
+    /**
+    * Get blogpost
+    *
+    * @return BlogPost
+    */
+    public function getBlogpost()
+    {
+        return $this->blogpost;
     }
 }
 

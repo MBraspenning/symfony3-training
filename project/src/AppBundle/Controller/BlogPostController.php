@@ -66,9 +66,12 @@ class BlogPostController extends Controller
     public function showAction(BlogPost $blogPost)
     {
         $deleteForm = $this->createDeleteForm($blogPost);
+        
+        $comments = $blogPost->getComments();
 
         return $this->render('blogpost/show.html.twig', array(
             'blogPost' => $blogPost,
+            'comments' => $comments,
             'delete_form' => $deleteForm->createView(),
         ));
     }

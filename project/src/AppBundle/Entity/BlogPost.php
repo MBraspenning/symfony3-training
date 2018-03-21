@@ -41,6 +41,13 @@ class BlogPost
      * @ORM\Column(name="date_added", type="datetime")
      */
     private $dateAdded;
+    
+    /**
+    * @var Comments[]
+    *
+    * @ORM\OneToMany(targetEntity="Comment", mappedBy="blogpost")
+    */
+    private $comments;
 
 
     /**
@@ -124,5 +131,27 @@ class BlogPost
     {
         return $this->dateAdded;
     }
+    
+    /**
+    * Set Comments
+    *
+    * @return Comments[]
+    */
+    public function setComments($comments)
+    {
+        $this->comments= $comments;
+        
+        return $this;
+    }
+    
+    /**
+    * Get Comments
+    *
+    * @return Comments[]
+    */
+    public function getComments()
+    {
+        return $this->comments;
+    }  
 }
 
