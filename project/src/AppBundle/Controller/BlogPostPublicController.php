@@ -52,7 +52,8 @@ class BlogPostPublicController extends Controller
             $em->persist($comment);
             $em->flush();
 
-            return $this->render('blogpublic/show.html.twig', array(
+            return $this->redirectToRoute('blog_show_public', array(
+                'id' => $blogPost->getId(),
                 'blogPost' => $blogPost,
                 'comments' => $comments,
                 'form' => $form->createView(),
