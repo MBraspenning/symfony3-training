@@ -42,6 +42,18 @@ class Comment
     * @ORM\JoinColumn(name="blogpost_id", referencedColumnName="id")
     */
     private $blogpost;
+    
+    /**
+    * @var \DateTime
+    *
+    * @ORM\Column(name="date_added", type="datetime")
+    */
+    private $dateAdded;
+    
+    public function __construct()
+    {
+        $this->dateAdded = new \DateTime('now');
+    }
 
     /**
      * Get id
@@ -99,6 +111,30 @@ class Comment
     public function getBody()
     {
         return $this->body;
+    }
+    
+    /**
+    * Set dateAdded
+    *
+    * @param \DateTime $dateAdded
+    *
+    * @return BlogPost
+    */
+    public function setDateAdded($dateAdded)
+    {
+        $this->dateAdded = $dateAdded;
+        
+        return $this;
+    }
+    
+    /**
+    * Get dateAdded
+    *
+    * @return \DateTime
+    */
+    public function getDateAdded()
+    {
+        return $this->dateAdded;
     }
     
     /**

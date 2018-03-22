@@ -47,6 +47,9 @@
                     <td>
                         {{ comment.body }}
                     </td>
+                    <td>
+                        {{ comment.dateAdded|date('Y-m-d') }}
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

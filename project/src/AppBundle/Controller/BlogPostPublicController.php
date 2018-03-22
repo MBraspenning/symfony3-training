@@ -8,7 +8,8 @@ use AppBundle\Service\BlogPostService;
 use AppBundle\Service\CommentService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Blogpost controller.
@@ -59,9 +60,6 @@ class BlogPostPublicController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-//            $em = $this->getDoctrine()->getManager();
-//            $em->persist($comment);
-//            $em->flush();
             $this->CommentService->persist($comment);
 
             return $this->redirectToRoute('blog_show_public', array(

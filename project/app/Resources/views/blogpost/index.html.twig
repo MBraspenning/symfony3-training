@@ -1,40 +1,46 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Blogposts list</h1>
+    <div class="container">
+       
+        <h1 class="page-header text-center mb-4">Blogposts list</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Post</th>
-                <th>Dateadded</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for blogPost in blogPosts %}
-            <tr>
-                <td><a href="{{ path('blog_show', { 'id': blogPost.id }) }}">{{ blogPost.id }}</a></td>
-                <td>{{ blogPost.title }}</td>
-                <td>{{ blogPost.post }}</td>
-                <td>{% if blogPost.dateAdded %}{{ blogPost.dateAdded|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('blog_show', { 'id': blogPost.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('blog_edit', { 'id': blogPost.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Post</th>
+                    <th>Dateadded</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for blogPost in blogPosts %}
+                <tr>
+                    <td><a href="{{ path('blog_show', { 'id': blogPost.id }) }}">{{ blogPost.id }}</a></td>
+                    <td>{{ blogPost.title }}</td>
+                    <td>{{ blogPost.post }}</td>
+                    <td>{% if blogPost.dateAdded %}{{ blogPost.dateAdded|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>
+                        <ul class="list-group" id="my-list">
+                            <li class="list-item">
+                                <a href="{{ path('blog_show', { 'id': blogPost.id }) }}">show</a>
+                            </li>
+                            <li class="list-item">
+                                <a href="{{ path('blog_edit', { 'id': blogPost.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a class="btn btn-primary" href="{{ path('blog_new') }}">Create a new blogPost</a>
+        <a class="btn btn-primary" href="{{ path('blog_new') }}">Create a new blogPost</a>
+        
+        <a href="{{ path('comment_index') }}" class="btn btn-primary">View all Comments</a>
 
+    </div>
+    
 {% endblock %}

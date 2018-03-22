@@ -26,6 +26,15 @@ class CommentController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $comments = $em->getRepository('AppBundle:Comment')->findAll();
+        
+//        $form = $this->createDeleteForm($comment);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $em = $this->getDoctrine()->getManager();
+//            $em->remove($comment);
+//            $em->flush();
+//        }
 
         return $this->render('comment/index.html.twig', array(
             'comments' => $comments,
