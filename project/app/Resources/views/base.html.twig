@@ -5,23 +5,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         {% block stylesheets %}{% endblock %}
-        <style>
-            html, body {
-                margin: 0;
-                padding: 0;
-            }
-            #container {
-                margin: 0 auto;
-                text-align: center;
-            }
-            #my-list ul {
-                list-style: none;
-            }
-            #my-list li {
-                display: inline-block;
-                padding: 25px;
-            }
-        </style>
+        <link rel="stylesheet" href="{{ asset('stylesheets/main.css') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
@@ -37,17 +21,8 @@
                 </ul>
             </div>
         </nav>
-<!--
-        <div class="row mb-5">
-            <div class="col-md-12">
-               <nav class="navbar navbar-dark bg-dark">
-                    <a class="nav-link text-white" href="{{ path('homepage') }}">Home</a>
-                    <a class="nav-link text-white" href="{{ path('blog_index_public') }}">Blog</a>
-                </nav>    
-            </div>
-        </div>    
--->
-        {% block body %}{% endblock %}
+            {% block body %}{% endblock %}    
+            {% block post %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

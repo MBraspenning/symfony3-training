@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Blogposts list</h1>
 
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -35,9 +35,6 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('blog_new') }}">Create a new blogPost</a>
-        </li>
-    </ul>
+    <a class="btn btn-primary" href="{{ path('blog_new') }}">Create a new blogPost</a>
+
 {% endblock %}

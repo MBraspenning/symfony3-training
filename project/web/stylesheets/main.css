@@ -1,0 +1,15 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+#container {
+    margin: 0 auto;
+    text-align: center;
+}
+#my-list ul {
+    list-style: none;
+}
+#my-list li {
+    display: inline-block;
+    padding: 25px;
+}

@@ -1,34 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1 class="page-header text-center mb-4">Blogposts list</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Post</th>
-                <th>Dateadded</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for blogPost in blogPosts %}
-            <tr>
-                <td><a href="{{ path('blog_show_public', { 'id': blogPost.id }) }}">{{ blogPost.id }}</a></td>
-                <td>{{ blogPost.title }}</td>
-                <td>{{ blogPost.post }}</td>
-                <td>{% if blogPost.dateAdded %}{{ blogPost.dateAdded|date('Y-m-d') }}{% endif %}</td>
-                <td>
-                    <ul class="list-group" id="my-list">
-                        <li class="list-item" style="padding: 0;">
-                            <a href="{{ path('blog_show_public', { 'id': blogPost.id }) }}">show</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        
+    <h1 class="page-header text-center mb-4">Blog</h1>
+        <table class="table">
+            <thead>
+                <tr>
+<!--                    <th>Id</th>-->
+                    <th>Title</th>
+                    <th>Post</th>
+                    <th>Dateadded</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for blogPost in blogPosts %}
+                <tr>
+<!--                    <td><a href="{{ path('blog_show_public', { 'id': blogPost.id }) }}">{{ blogPost.id }}</a></td>-->
+                    <td>{{ blogPost.title }}</td>
+                    <td>{{ blogPost.post }}</td>
+                    <td>{% if blogPost.dateAdded %}{{ blogPost.dateAdded|date('Y-m-d') }}{% endif %}</td>
+                    <td>
+                        <ul class="list-group" id="my-list">
+                            <li class="list-item" style="padding: 0;">
+                                <a href="{{ path('blog_show_public', { 'id': blogPost.id }) }}">show</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>          
 {% endblock %}

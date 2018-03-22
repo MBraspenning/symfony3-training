@@ -3,20 +3,26 @@
 {% block body %}
     <div id="wrapper">
         <div id="container">
-            <h1 class="page-header">Welcome to my Hobby Page</h1>
-            <h4>Click the links below to check out my hobby's</h4>
-            
-            <ul id="my-list">
-                <li>
-                    <a class="btn btn-primary" href="{{ path('hobby_page', {'hobby': 'music'}) }}">Music</a>
-                </li>
-                <li>
-                    <a class="btn btn-primary" href="{{ path('hobby_page', {'hobby': 'sport'}) }}">Sport</a>
-                </li>
-            </ul>
+            <div class="row">
+                <div class="col-md-8">
+                <h1 class="page-header">Welcome to my Hobby Page</h1>
+                <h4>Click the links below to check out my hobby's</h4>
+
+                <ul id="my-list">
+                    <li>
+                        <a class="btn btn-primary" href="{{ path('hobby_page', {'hobby': 'music'}) }}">Music</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-primary" href="{{ path('hobby_page', {'hobby': 'sport'}) }}">Sport</a>
+                    </li>
+                </ul>
+                </div>
+                {{ render(controller('AppBundle:BlogPostPublic:recentposts')) }}
+            </div>
         </div>
     </div>
 {% endblock %}
-
+{% block post %}
+{% endblock %}
 {% block stylesheets %}
 {% endblock %}

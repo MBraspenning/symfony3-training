@@ -1,0 +1,6 @@
+<div class="col-md-4">
+    <h1>Recent Posts:</h1>
+    {% for recentPost in recentPosts %}
+        <p><a href="{{ path('blog_show_public', { 'id': recentPost.id }) }}">{{ recentPost.title }}</a></p>
+    {% endfor %}
+</div>

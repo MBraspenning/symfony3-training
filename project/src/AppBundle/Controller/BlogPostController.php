@@ -38,7 +38,7 @@ class BlogPostController extends Controller
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
-    {
+    {        
         $blogPost = new Blogpost();
         $form = $this->createForm('AppBundle\Form\BlogPostType', $blogPost);
         $form->handleRequest($request);

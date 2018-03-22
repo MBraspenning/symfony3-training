@@ -15,6 +15,7 @@ class MyController extends Controller
     {
         return $this->render('default/'.$hobby.'.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'hobby' => $hobby,
         ]);
     }
 }

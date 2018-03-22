@@ -66,5 +66,22 @@ class BlogPostPublicController extends Controller
             'form' => $form->createView(),
         ));
     }
+    
+    /**
+     * Lists all blogPost entities.
+     *
+     * @Route("/", name="blog_recent_public")
+     * @Method("GET")
+     */
+    public function recentpostsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $recentPosts = $em->getRepository('AppBundle:BlogPost')->findBy([], [], 5, 0);
+        
+        return $this->render('blogpublic/recentposts.html.twig', array(
+            'recentPosts' => $recentPosts,
+        ));
+    }
 
 }

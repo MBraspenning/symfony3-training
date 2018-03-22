@@ -2,11 +2,12 @@
 
 {% block body %}
     <div id="container">
-        <h1>Welcome to my Music Page</h1>
+        <h1 class="mb-5">Welcome to my {{ hobby }} Page</h1>
         
-        <h4>Professional Bass Player</h4>
+        
         <div class="row" id="projects-div">
-            <div class="col-md-12">
+            <div class="col-md-8">
+                <h4>Professional Bass Player</h4>
                 <h5 class="mt-4 mb-4">Some of my projects:</h5>
                 <ul class="list-group">
                     <li class="list-item">Scala &amp; Kolacny Brothers</li>
@@ -14,11 +15,13 @@
                     <li class="list-item">The Very Big Band</li>
                 </ul>    
             </div>
+            {{ render(controller('AppBundle:BlogPostPublic:recentposts')) }}
         </div>
         
     </div>
 {% endblock %}
-
+{% block post %}
+{% endblock %}
 
 {% block stylesheets %}
 {% endblock %}
