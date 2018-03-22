@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\BlogPost;
+use AppBundle\Service\BlogPostService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -14,6 +15,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  */
 class BlogPostController extends Controller
 {
+    private $BlogPostService;
+    
+    public function __construct(BlogPostService $BlogPostService)
+    {
+        $this->BlogPostService = $BlogPostService;
+    }
+    
     /**
      * Lists all blogPost entities.
      *
@@ -44,9 +52,7 @@ class BlogPostController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($blogPost);
-            $em->flush();
+            $this->BlogPostService->persist($blogPost);
 
             return $this->redirectToRoute('blog_show', array('id' => $blogPost->getId()));
         }

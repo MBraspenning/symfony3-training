@@ -4,6 +4,8 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\BlogPost;
 use AppBundle\Entity\Comment;
+use AppBundle\Service\BlogPostService;
+use AppBundle\Service\CommentService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -15,6 +17,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  */
 class BlogPostPublicController extends Controller
 {
+    private $BlogPostService;
+    private $CommentService;
+    
+    public function __construct(BlogPostService $BlogPostService, CommentService $CommentService)
+    {
+        $this->BlogPostService = $BlogPostService;
+        $this->CommentService = $CommentService;
+    }
+    
     /**
      * Lists all blogPost entities.
      *
@@ -48,9 +59,10 @@ class BlogPostPublicController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($comment);
-            $em->flush();
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($comment);
+//            $em->flush();
+            $this->CommentService->persist($comment);
 
             return $this->redirectToRoute('blog_show_public', array(
                 'id' => $blogPost->getId(),
@@ -82,6 +94,21 @@ class BlogPostPublicController extends Controller
         return $this->render('blogpublic/recentposts.html.twig', array(
             'recentPosts' => $recentPosts,
         ));
+    }
+    
+    /**
+    * List all blogposts for last week
+    *
+    * @Route("/week", name="blogpost_week")
+    * @Method("GET")
+    */
+    public function weekAction()
+    {
+        $blogposts = $this->blogPostService->fetchAllPostsForLastWeek();
+        
+        return $this->render('blogpost/index.html.twig', [
+            'blogposts' => $blogposts,
+        ]);
     }
 
 }
