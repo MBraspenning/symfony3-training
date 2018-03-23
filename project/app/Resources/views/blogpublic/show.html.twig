@@ -36,9 +36,14 @@
         <input class="btn btn-primary ml-2" type="submit" value="Create" />
     {{ form_end(form) }}
     
-    <p class="ml-2 mt-5">{{ comments|length }} comments.</p>
+    <p class="ml-2 mt-5">{{ comments|length }} comments</p>
     <table class="table">
         <tbody>
+           <tr>
+               <th>Author</th>
+               <th>Comment</th>
+               <th>Date Added</th>
+           </tr>
             {% for comment in comments %}
                 <tr>
                     <td>

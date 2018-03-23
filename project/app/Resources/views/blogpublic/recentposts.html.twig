@@ -1,6 +1,10 @@
-<div class="col-md-4">
-    <h1>Recent Posts:</h1>
-    {% for recentPost in recentPosts %}
-        <p><a href="{{ path('blog_show_public', { 'id': recentPost.id }) }}">{{ recentPost.title }}</a></p>
-    {% endfor %}
+<div class="col-md-4" id="sidebar">
+    <h3 class="mb-4" style="text-align: left;">Recent Posts:</h3>
+    <ul class="list-group" style="list-style: none; text-align: left;">
+        {% for recentPost in recentPosts %}
+            <li class="list-item">
+                <a href="{{ path('blog_show_public', { 'id': recentPost.id }) }}">{{ recentPost.title }}</a>                
+            </li>
+        {% endfor %}   
+    </ul>  
 </div>

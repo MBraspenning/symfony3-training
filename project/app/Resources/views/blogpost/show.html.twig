@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Blogpost</h1>
+    <div class="container">
+    
+    <h1 class="page-header text-center mb-4">Blogpost</h1>
 
-    <table>
+    <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -23,13 +25,27 @@
             </tr>
         </tbody>
     </table>
-    
-    <table>
+
+    <ul class="list-group" style="list-style: none;display: inline-block;">
+        <li style="display: inline-block;">
+            <a class="btn btn-primary" href="{{ path('blog_index') }}">Back to the list</a>
+        </li>
+        <li style="display: inline-block;">
+            <a class="btn btn-warning" href="{{ path('blog_edit', { 'id': blogPost.id }) }}">Edit</a>
+        </li>
+        <li style="display: inline-block;">
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+     
+    <h3 class="page-header mb-4 mt-4 text-center">Comments</h3>
+    <p class="ml-2 mt-5">{{ comments|length }} comments</p>  
+    <table class="table"> 
         <tbody>
             <tr>
-                <td colspan="2">
-                    {{ comments|length }} comments.
-                </td>
+                
             </tr>
             {% for comment in comments %}
                 <tr>
@@ -43,18 +59,7 @@
             {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('blog_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('blog_edit', { 'id': blogPost.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+       
+    </div>
+    
 {% endblock %}

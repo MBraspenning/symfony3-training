@@ -34,9 +34,13 @@ class BlogPostController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $blogPosts = $em->getRepository('AppBundle:BlogPost')->findAll();
+//        foreach($blogPosts as $blogPost) {
+//            $deleteForm = $this->createDeleteForm($blogPost);    
+//        }
 
         return $this->render('blogpost/index.html.twig', array(
             'blogPosts' => $blogPosts,
+//            'delete_form' => $deleteForm->createView(),
         ));
     }
 

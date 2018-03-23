@@ -23,7 +23,7 @@
                     <td>{{ blogPost.post }}</td>
                     <td>{% if blogPost.dateAdded %}{{ blogPost.dateAdded|date('Y-m-d H:i:s') }}{% endif %}</td>
                     <td>
-                        <ul class="list-group" id="my-list">
+                        <ul class="list-group" style="list-style: none;">
                             <li class="list-item">
                                 <a href="{{ path('blog_show', { 'id': blogPost.id }) }}">show</a>
                             </li>

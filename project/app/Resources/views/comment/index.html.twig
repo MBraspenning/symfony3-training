@@ -2,7 +2,7 @@
 
 {% block body %}
    <div class="container">
-       <h1>Comments list</h1>
+       <h1 class="page-header text-center mb-5">Comments list</h1>
 
         <table class="table">
             <thead>
@@ -20,11 +20,11 @@
                     <td>{{ comment.author }}</td>
                     <td>{{ comment.body }}</td>
                     <td>
-                        <ul>
-                            <li>
+                        <ul class="list-group" style="list-style: none;">
+                            <li class="list-item">
                                 <a href="{{ path('comment_show', { 'id': comment.id }) }}">show</a>
                             </li>
-                            <li>
+                            <li class="list-item">
                                 <a href="{{ path('comment_edit', { 'id': comment.id }) }}">edit</a>
                             </li>
                         </ul>
